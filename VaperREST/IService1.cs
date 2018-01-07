@@ -14,34 +14,39 @@ namespace VaperREST
     {
 
         [OperationContract]
-        string GetData(int value);
+        [WebInvoke(
+            Method = "GET",
+            ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "vapers")]
+        IList<Vaper> GetVapers();
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        [WebInvoke(
+            Method = "GET",
+            ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "vapers/{id}")]
+        Vaper GetOneVaper(string id);
 
-        // TODO: Add your service operations here
-    }
+        [OperationContract]
+        [WebInvoke(
+            Method = "POST",
+            RequestFormat = WebMessageFormat.Json,
+            UriTemplate = "vapers")]
+        void AddVaper(Vaper newVaper);
 
+        [OperationContract]
+        [WebInvoke(
+            Method = "DELETE",
+            RequestFormat = WebMessageFormat.Json,
+            UriTemplate = "vapers?id={id}")]
+        Vaper DeleteVaper(int id);
 
-    // Use a data contract as illustrated in the sample below to add composite types to service operations.
-    [DataContract]
-    public class CompositeType
-    {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
-        [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
-
-        [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
+        [OperationContract]
+        [WebInvoke(
+            Method = "PUT",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "vapers")]
+        Vaper UpdateVaper(Vaper myVaper);
     }
 }
