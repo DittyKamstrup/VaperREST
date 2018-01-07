@@ -14,7 +14,12 @@ namespace VaperClientConsole
     {
 
         //CONNECTION STRING
+
+            //LOCAL
         private const string uri = "http://localhost:1291/Service1.svc";
+
+            //AZURE
+        //private const uri2 = "http://vaperrestservice.azurewebsites.net/Service1.svc";
 
         //DEFAULT CONSTRUCTOR
         public RestClient()
