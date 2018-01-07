@@ -34,8 +34,8 @@ namespace VaperClientConsole
             using (HttpClient client = new HttpClient())
             {
                 string content = await client.GetStringAsync(uri + "/vapers");
-                IList<Vaper> cList = JsonConvert.DeserializeObject<IList<Vaper>>(content);
-                return cList;
+                IList<Vaper> vList = JsonConvert.DeserializeObject<IList<Vaper>>(content);
+                return vList;
             }
         }
 
@@ -44,8 +44,8 @@ namespace VaperClientConsole
             using (HttpClient client = new HttpClient())
             {
                 string content = await client.GetStringAsync(uri + "/vaper/" + id);
-                Vaper c = JsonConvert.DeserializeObject<Vaper>(content);
-                return c;
+                Vaper v = JsonConvert.DeserializeObject<Vaper>(content);
+                return v;
             }
         }
 
@@ -54,8 +54,8 @@ namespace VaperClientConsole
             using (HttpClient client = new HttpClient())
             {
                 var content = await client.DeleteAsync(uri + "/vapers?id=" + id);
-                Vaper c = JsonConvert.DeserializeObject<Vaper>(content.Content.ReadAsStringAsync().Result);
-                return c;
+                Vaper v = JsonConvert.DeserializeObject<Vaper>(content.Content.ReadAsStringAsync().Result);
+                return v;
             }
         }
 
